@@ -7,7 +7,6 @@ import { handleViewShot, alterarTamanho } from './curtiActions'
 import Grid from '../template/grid'
 
 const CurtiDemaisList = props => {
-
   const renderShots = () => {
     const list = props.list || []
     return list.map(shot => (
@@ -18,25 +17,24 @@ const CurtiDemaisList = props => {
               <img className="img-responsive" src={shot.images.hidpi ? shot.images.hidpi : shot.images.normal }  
                onClick={() => props.handleViewShot(shot)} alt="Sem Imagem"/>
             </div>
-            <ul  className="tools group">
-              {/* <li className="fav">
-                <i className='fa fa-heart' ></i><span>{shot.likes_count}</span>
-              </li>
-              <li className="cmnt">
-                <i className='fa fa-comments'></i><span> {shot.comments_count}</span>
-              </li> */}
-              <li className="views">
-                <a id='' className='tamanho' title="Alterar Tamanho do Shot" onClick={() => props.alterarTamanho(shot.id)} >
-                 <i className='fa fa-eye'></i> 
-                </a>
-               
-              </li>
-            </ul>
           </div>
         </div>
+        <Grid cols={'12'}>
+          <div className="alignText">
+            {shot.title.length > 28 ? (
+              <span className="text-left">{ shot.title.substring(0,28) + '...' }</span>
+            ) : (
+              <span className="text-left">{shot.title}</span>
+            )}
+              <span className="right">
+                 <i className='icon-eye'></i> {shot.views_count} views
+              </span>
+          </div>
+        </Grid>
       </Grid>
     ))
   }
+
 
   return (
 

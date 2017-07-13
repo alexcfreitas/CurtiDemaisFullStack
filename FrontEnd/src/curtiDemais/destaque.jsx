@@ -46,6 +46,9 @@ export default class ShotController extends Component {
 
     return (
       <Grid cols='12'>
+        <div className="titulo">
+            <h3>Shot em destaque</h3>
+        </div>
         <div className="alignBody col-md-offset-2">
         <Grid cols='12 8'>
           <div className="titulo">
@@ -56,7 +59,6 @@ export default class ShotController extends Component {
             <div className="shot-img">
               <img className="img-responsive" src={this.state.images.hidpi} alt="Sem Imagem"/>
             </div>
-
           </div>
         </div>
       </Grid>

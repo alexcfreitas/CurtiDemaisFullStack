@@ -10,6 +10,6 @@ export default props => (
       <Route path='/destaque' component={Destaque} />      
     <Route path='/curtiDemais' component={CurtiDeMais} />
     <Route path='/shot/:shot' component={ShotController} />
-    <Redirect from='*' to='/curtiDemais' />
+    <Redirect from='*' to='/destaque' />
   </Router>
 )

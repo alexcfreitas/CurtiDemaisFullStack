@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Grid from '../template/grid'
-import {  changeDescription, search } from './curtiActions'
+import {  changeDescription, search, alterarTamanho } from './curtiActions'
 
 class CurtiDemaisForm extends Component {
     constructor(props) {
@@ -25,16 +25,22 @@ class CurtiDemaisForm extends Component {
         const { search, description } = this.props
         return (
             <div role='form' className='curtiForm'>
-              <Grid cols='12 10 '>
-                <input id='username' className='form-control'
-                  placeholder='O que voceê deseja pesquisar ?'
-                                  onChange={this.props.changeDescription}
-                                  value={this.props.description}></input>
-              </Grid>
-              <Grid cols='12 2'>
-                <button className='btn btn-primary' onClick={search}>
-                  <i className='icon-magnifier'></i> Pesquisar
-                </button>
+              <Grid cols='12 12 12 12'>
+                <Grid cols='12 8 8 8'>
+                    <input id='username' className='form-control input-md'
+                    onChange={this.props.changeDescription}
+                    value={this.props.description}></input>
+                </Grid>
+                <Grid cols='12 4 4 4'>
+                    <Grid cols='12 6'>
+                    <button className='btnCustom' onClick={search}>
+                    <i className='icon-magnifier'></i> Pesquisar
+                    </button>
+                    </Grid>
+                    <Grid cols='12 6'>
+                    <button id='alteraTamanho' className='btnCustom' onClick={() => this.props.alterarTamanho()}><i className='icon-grid'></i>Alterar Tamanho</button> 
+                    </Grid>
+                </Grid>
               </Grid>
             </div>
         )
@@ -43,6 +49,6 @@ class CurtiDemaisForm extends Component {
 
 const mapStateToProps = state => ({description: state.curti.description})
 const mapDispatchToProps = dispatch => 
-    bindActionCreators({ changeDescription, search, }, dispatch)
+    bindActionCreators({ changeDescription, search, alterarTamanho }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(CurtiDemaisForm)
 
