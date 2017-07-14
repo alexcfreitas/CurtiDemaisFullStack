@@ -14,6 +14,7 @@ export default class ShotController extends Component {
       shot: {},
       images: {},
       user: {},
+      likes: 0
     }
 
     this.refreshShot()
@@ -25,22 +26,20 @@ export default class ShotController extends Component {
     const shot = document.URL
     const shotArray = shot.split('/')
     const shotID = shotArray[shotArray.length-1]
-    const shotIDtest = '5965fb8930862284f92d8741'
 
     axios.get(`${URL}`)
-      .then(resp => this.setState({...this.state, shot: resp.data[0], images: resp.data[0].images, user: resp.data[0].user}))
+      .then(resp => this.setState({...this.state, shot: resp.data[0], images: resp.data[0].images, user: resp.data[0].user, likes: resp.data[0].likes_count}))
     }
 
   handleLike(){
-    this.setState(prevState => ({
-      isLike: !prevState.isLike
-    }));
-    const shot = document.URL
-    const shotArray = shot.split('/')
-    const shotID = shotArray[shotArray.length-1]
-    axios.get(`${BasicURL}/shots/${shotID}/like`, AuthToken)
-      .then(resp => this.setState({...this.state}))
+    const shotID = this.state.shot._id
+    const likeMaisUm = this.state.likes + 1
+    console.log(likeMaisUm)
+    axios({method: 'put',url: `${URL}/${shotID}`, data: {likes_count: likeMaisUm}}) 
+    $('#changeCssLiked').removeClass().addClass('LikeTrue')     
+    this.refreshShot()
   }
+
   handleVoltar(){
     location.href='/#/curtiDemais'
   }
@@ -88,7 +87,7 @@ export default class ShotController extends Component {
           <Grid cols='12 12 12 12'>
             <ul  className="tools">
               <li className="fav" onClick={this.handleLike}>
-                {this.state.isLike ? <span><i className='fa fa-heart LikeTrue' ></i><span className='LikeTrue'> Like</span></span>: <span><i className='fa fa-heart ' ></i><span>{this.state.shot.likes_count}</span></span>}
+                  <span id="changeCssLiked" className=""><i className='fa fa-heart ' ></i><span>{this.state.likes}</span></span>
               </li>
               <li className="cmnt">
                 <i className='fa fa-comments'></i><span> {this.state.shot.comments_count}</span>

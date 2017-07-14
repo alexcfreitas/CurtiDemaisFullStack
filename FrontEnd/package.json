@@ -8,7 +8,7 @@
     "production": "webpack --progress -p"
   },
   "keywords": [],
-  "author": "Alexsandr0 Carvalho de Freitas",
+  "author": "Alexsandro Carvalho de Freitas",
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.15.3",

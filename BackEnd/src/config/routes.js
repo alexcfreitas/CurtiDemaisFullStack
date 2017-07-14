@@ -10,4 +10,5 @@ module.exports = function(server) {
     // CURTI Routes
     const curtiService = require('../api/curtiDemais/curtiService')
     curtiService.register(router, '/shots')
+    
 }

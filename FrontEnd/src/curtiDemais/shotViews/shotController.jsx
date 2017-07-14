@@ -1,8 +1,7 @@
 import axios from 'axios'
 import React, {Component} from 'react'
-
 import Grid from '../../template/grid'
-import {BasicURL, AuthToken} from '../../main/configAxios'
+
 
 const URL = 'http://localhost:3003/api/shots'
 
@@ -12,9 +11,9 @@ export default class ShotController extends Component {
     this.state = {
       shot: {},
       images: {},
-      user: {}
+      user: {},
+      likes: 0
     }
-
     this.refreshShot()
      this.handleLike = this.handleLike.bind(this);
      this.handleVoltar = this.handleVoltar.bind(this);
@@ -24,20 +23,21 @@ export default class ShotController extends Component {
     const shot = document.URL
     const shotArray = shot.split('/')
     const shotID = shotArray[shotArray.length-1]
-
     axios.get(`${URL}/${shotID}`)
-      .then(resp => this.setState({...this.state, shot: resp.data, images: resp.data.images, user: resp.data.user}))
+      .then(resp => this.setState({...this.state, shot: resp.data, images: resp.data.images, user: resp.data.user, likes: resp.data.likes_count}))
   }
 
   handleLike(){
-    this.setState(prevState => ({
-      isLike: !prevState.isLike
-    }));
     const shot = document.URL
     const shotArray = shot.split('/')
     const shotID = shotArray[shotArray.length-1]
-    axios.get(`${BasicURL}/shots/${shotID}/like`, AuthToken)
-      .then(resp => this.setState({...this.state}))
+    const likeMaisUm = this.state.likes + 1
+    console.log(likeMaisUm)
+    axios({method: 'put',url: `${URL}/${shotID}`, data: {likes_count: likeMaisUm}}) 
+    this.refreshShot()
+    $('#changeCssLiked').removeClass().addClass('LikeTrue');   
+    console.log($('#changeCssLiked').removeClass().addClass('LikeTrue'));      
+    
   }
 
   handleVoltar(){
@@ -84,10 +84,10 @@ export default class ShotController extends Component {
               </Grid>
         </div>
         <div className="row">
-          <Grid cols='12 12 12 12'>
+          <Grid key={this.state.shot._id} cols='12 12 12 12'>
             <ul  className="tools">
               <li className="fav" onClick={this.handleLike}>
-                {this.state.isLike ? <span><i className='fa fa-heart LikeTrue' ></i><span className='LikeTrue'> Like</span></span>: <span><i className='fa fa-heart ' ></i><span>{this.state.shot.likes_count}</span></span>}
+                  <span id="changeCssLiked" className=""><i className='fa fa-heart ' ></i><span>{this.state.likes}</span></span>
               </li>
               <li className="cmnt">
                 <i className='fa fa-comments'></i><span> {this.state.shot.comments_count}</span>
