@@ -3,7 +3,7 @@
 ----------------------------------------------------*/
 
 
-$font-textos: 'Lato',  sans-serif;
+$font-textos: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-size-conteudos: 14px;
 
 
@@ -23,12 +23,13 @@ $corCinzaDefault: #e0d7d2;
 
 body {
 	background-color: $corBody;
-	color: $corLaranja;
+	color: $corBackHeader;
 	font-family: $font-textos;
 	font-weight: 100;
 	font-size: 15px;
 	margin: auto;
-
+	    // color: #444;
+    overflow-x: hidden;
 }
 
 

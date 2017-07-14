@@ -39,3 +39,11 @@ export const alterarTamanho = () => {
            }
        }
 }
+
+export const checkMenuForMobile = () => {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        $('#checkMenu').text().empty();
+    } else {
+        location.reload();
+    }
+}

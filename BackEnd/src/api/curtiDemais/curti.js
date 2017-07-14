@@ -2,7 +2,7 @@ const restful = require('node-restful')
 const mongoose = restful.mongoose
 
 const curtiDemaisSchema = new mongoose.Schema({
- id: { type: Number },
+  id: { type: Number },
   title: { type: String },
   description: { type: String },
   width: { type: Number },

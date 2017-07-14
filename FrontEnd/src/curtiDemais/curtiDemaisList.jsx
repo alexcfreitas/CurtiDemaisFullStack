@@ -21,8 +21,8 @@ const CurtiDemaisList = props => {
         </div>
         <Grid cols={'12'}>
           <div className="alignText">
-            {shot.title.length > 28 ? (
-              <span className="text-left">{ shot.title.substring(0,28) + '...' }</span>
+            {shot.title.length > 25 ? (
+              <span className="text-left">{ shot.title.substring(0,25) + '...' }</span>
             ) : (
               <span className="text-left">{shot.title}</span>
             )}

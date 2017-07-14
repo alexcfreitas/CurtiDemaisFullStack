@@ -14,7 +14,7 @@ import Header from '../template/header'
 export default props => (
   <div>
       <Header />
-    <div className="container-fluid">
+    <div className="container">
       <Routes />
     </div>
   </div>

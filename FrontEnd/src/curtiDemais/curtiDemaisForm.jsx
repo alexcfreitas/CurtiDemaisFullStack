@@ -38,7 +38,7 @@ class CurtiDemaisForm extends Component {
                     </button>
                     </Grid>
                     <Grid cols='12 6'>
-                    <button id='alteraTamanho' className='btnCustom' onClick={() => this.props.alterarTamanho()}><i className='icon-grid'></i>Alterar Tamanho</button> 
+                    <button id='alteraTamanho' className='btnCustom' onClick={() => this.props.alterarTamanho()}><i className='icon-grid'></i> Alterar Tamanho</button> 
                     </Grid>
                 </Grid>
               </Grid>
