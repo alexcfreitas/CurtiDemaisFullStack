@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Grid from '../../template/grid'
 
 
-const URL = 'http://52.67.132.87/bancoCurtidemais/api/shots'
+const URL = 'http://52.67.132.87/api/shots'
 
 export default class ShotController extends Component {
   constructor(props) {

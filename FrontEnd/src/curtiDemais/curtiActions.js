@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://52.67.132.87/bancoCurtidemais/api/shots'
+const URL = 'http://52.67.132.87/api/shots'
 
 export const changeDescription = event => ({
     type: 'DESCRIPTION_CHANGED',
