@@ -5,7 +5,7 @@ import Grid from '../template/grid'
 import {BasicURL, AuthToken} from '../main/configAxios'
 import CurtiDemaisList from './curtiDemaisList'
 
-const URL = 'http://localhost:3003/api/shots'
+const URL = 'http://52.67.132.87/bancoCurtidemais/api/shots'
 
 export default class ShotController extends Component {
   constructor(props) {
